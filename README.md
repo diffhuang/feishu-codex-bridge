@@ -17,6 +17,10 @@ The bridge is responsible for three things: injecting Feishu conversation contex
 - Controlled permissions: `ALLOWED_OPEN_IDS`, `CODEX_WORKSPACE_ROOT`, and `CODEX_SANDBOX_MODE` limit who can use the bridge, which files stay in scope, and how much access Codex gets.
 - Practical bridge operations: built-in `/help`, `/status`, and `/reset` commands, lightweight progress feedback, user-scoped logs, and optional verbose event traces.
 
+## Screenshot
+
+![Feishu chat demo](./assets/screenshots/feishu-chat-demo.png)
+
 ## Requirements
 
 - Node.js 20 or later
