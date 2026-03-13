@@ -58,21 +58,28 @@ Use a path such as:
 
 ## Quick Start
 
-1. Install dependencies:
+1. Clone the repository and enter the project directory:
+
+```bash
+git clone https://github.com/diffhuang/feishu-codex-bridge.git
+cd feishu-codex-bridge
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Create a local env file:
+3. Create a local env file:
 
 ```bash
 cp .env.example .env
 ```
 
-3. Update `.env` with your Feishu app credentials, allowed open IDs, and Codex workspace path.
+4. Update `.env` with your Feishu app credentials, allowed open IDs, and Codex workspace path.
 
-4. Start the bridge:
+5. Start the bridge:
 
 ```bash
 npm run dev

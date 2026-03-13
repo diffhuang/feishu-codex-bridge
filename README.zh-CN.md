@@ -58,21 +58,28 @@ codex --help
 
 ## 快速开始
 
-1. 安装依赖：
+1. 克隆仓库并进入项目目录：
+
+```bash
+git clone https://github.com/diffhuang/feishu-codex-bridge.git
+cd feishu-codex-bridge
+```
+
+2. 安装依赖：
 
 ```bash
 npm install
 ```
 
-2. 复制环境变量模板：
+3. 复制环境变量模板：
 
 ```bash
 cp .env.example .env
 ```
 
-3. 编辑 `.env`，填写飞书应用凭证、允许访问的 open id，以及 Codex 工作区路径。
+4. 编辑 `.env`，填写飞书应用凭证、允许访问的 open id，以及 Codex 工作区路径。
 
-4. 启动桥接服务：
+5. 启动桥接服务：
 
 ```bash
 npm run dev
