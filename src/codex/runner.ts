@@ -3,14 +3,14 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseAttachmentBlock } from "./attachment-block";
+import { parseAttachmentBlock } from "./attachment-block.js";
 import {
   extractAgentMessageFromJsonl,
   extractThreadIdFromJsonl,
   parseCodexResultPayload,
   type CodexFileAttachment,
-} from "./result-parser";
-import type { CodexResponseMode } from "./response-mode";
+} from "./result-parser.js";
+import type { CodexResponseMode } from "./response-mode.js";
 
 export type CodexRunInput = {
   artifacts?: CodexRunArtifacts;

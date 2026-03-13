@@ -1,13 +1,36 @@
 {
   "name": "feishu-codex-bridge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "GPL-3.0-only",
-  "private": true,
+  "private": false,
   "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "bin": {
+    "feishu-codex-bridge": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    ".env.example",
+    "LICENSE",
+    "README.md",
+    "README.zh-CN.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "tsx src/index.ts",
+    "start": "tsx src/cli.ts",
+    "build": "tsc -p tsconfig.build.json && node scripts/copy-build-assets.mjs",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run test -- --run && npm run typecheck && npm run build"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

@@ -1,5 +1,5 @@
-import { createExecutionBuffer } from "../codex/execution-buffer";
-import type { MessageSender } from "../feishu/message-sender";
+import { createExecutionBuffer } from "../codex/execution-buffer.js";
+import type { MessageSender } from "../feishu/message-sender.js";
 
 type ProcessStreamCoordinatorOptions = {
   chatId: string;

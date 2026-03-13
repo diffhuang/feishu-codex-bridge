@@ -15,7 +15,7 @@ The bridge is responsible for three things: injecting Feishu conversation contex
 - Feishu-aware task context: the bridge tells Codex that the request comes from a Feishu conversation before execution starts.
 - File handoff back to Feishu: Codex can reference existing workspace files through the attachment block protocol, and the bridge validates and uploads them.
 - Controlled permissions: `ALLOWED_OPEN_IDS`, `CODEX_WORKSPACE_ROOT`, and `CODEX_SANDBOX_MODE` limit who can use the bridge, which files stay in scope, and how much access Codex gets.
-- Practical bridge operations: built-in `/help`, `/status`, and `/reset` commands, lightweight progress feedback, local logs, and optional verbose event traces.
+- Practical bridge operations: built-in `/help`, `/status`, and `/reset` commands, lightweight progress feedback, user-scoped logs, and optional verbose event traces.
 
 ## Requirements
 
@@ -58,6 +58,43 @@ Use a path such as:
 
 ## Quick Start
 
+### Option 1: Global CLI install (Recommended)
+
+1. Install the package globally:
+
+```bash
+npm install -g feishu-codex-bridge
+```
+
+2. Create and enter a local runtime directory:
+
+```bash
+mkdir feishu-codex-bridge-runtime
+cd feishu-codex-bridge-runtime
+```
+
+3. Generate a local `.env` file from the packaged example:
+
+```bash
+feishu-codex-bridge init
+```
+
+4. Update `.env` with your Feishu app credentials, allowed open IDs, and Codex workspace path.
+
+5. Start the bridge:
+
+```bash
+feishu-codex-bridge
+```
+
+Expected startup log:
+
+```text
+[bridge] starting long connection for workspace /path/to/codex-workspace
+```
+
+### Option 2: Source checkout for development
+
 1. Clone the repository and enter the project directory:
 
 ```bash
@@ -79,7 +116,7 @@ cp .env.example .env
 
 4. Update `.env` with your Feishu app credentials, allowed open IDs, and Codex workspace path.
 
-5. Start the bridge:
+5. Start the bridge in development mode:
 
 ```bash
 npm run dev
@@ -170,6 +207,7 @@ This is the practical default for reading files, editing files inside the worksp
 
 ```bash
 npm run dev
+npm run build
 npm test
 npm run typecheck
 ```
@@ -213,8 +251,8 @@ Attachment rules:
 ## Logs
 
 - terminal logs keep timestamped output
-- the bridge also writes `logs/bridge-YYYY-MM-DD.log`
-- when `CODEX_VERBOSE_EVENTS=true`, raw event traces are written to `logs/requests/<requestId>.codex-events.jsonl`
+- the bridge also writes `~/.feishu-codex-bridge/logs/bridge-YYYY-MM-DD.log`
+- when `CODEX_VERBOSE_EVENTS=true`, raw event traces are written to `~/.feishu-codex-bridge/logs/requests/<requestId>.codex-events.jsonl`
 
 ## Verbose Event Mode
 
@@ -255,6 +293,16 @@ codex --help
 ```
 
 If you use a custom command path, update `CODEX_COMMAND`.
+
+### Global `feishu-codex-bridge` command not found
+
+Run:
+
+```bash
+npm bin -g
+```
+
+Make sure that directory is included in your shell `PATH`, then open a new terminal and try again.
 
 ### Message receive works poorly or not at all
 

@@ -1,17 +1,17 @@
-import { classifyCodexEvent } from "../codex/event-classifier";
-import { parseAttachmentBlock } from "../codex/attachment-block";
-import { parseCodexEventLine } from "../codex/event-parser";
-import { buildCodexPrompt } from "../codex/prompt-builder";
-import type { CodexResponseMode } from "../codex/response-mode";
-import { selectCodexResponseMode } from "../codex/response-mode";
-import type { CodexRunResult } from "../codex/runner";
-import { resolveAllowedAttachment, type ValidatedAttachment } from "../files/file-policy";
-import type { MessageSender } from "../feishu/message-sender";
+import { classifyCodexEvent } from "../codex/event-classifier.js";
+import { parseAttachmentBlock } from "../codex/attachment-block.js";
+import { parseCodexEventLine } from "../codex/event-parser.js";
+import { buildCodexPrompt } from "../codex/prompt-builder.js";
+import type { CodexResponseMode } from "../codex/response-mode.js";
+import { selectCodexResponseMode } from "../codex/response-mode.js";
+import type { CodexRunResult } from "../codex/runner.js";
+import { resolveAllowedAttachment, type ValidatedAttachment } from "../files/file-policy.js";
+import type { MessageSender } from "../feishu/message-sender.js";
 import {
   createProcessStreamCoordinator,
   type ProcessStreamCoordinator,
-} from "./process-stream-coordinator";
-import { createInMemorySessionStore, type SessionStore } from "./session-store";
+} from "./process-stream-coordinator.js";
+import { createInMemorySessionStore, type SessionStore } from "./session-store.js";
 
 export type OrchestratorRequest = {
   chatId: string;

@@ -1,11 +1,11 @@
-import { executeBridgeCommand, parseBridgeCommand } from "./command-router";
-import type { OrchestratorRequest, SenderPayload } from "./orchestrator";
-import { evaluateRequest } from "./permission-guard";
-import { buildGuardRejectionMessage } from "./rejection-message";
-import type { SessionStore } from "./session-store";
-import type { MessageSender } from "../feishu/message-sender";
-import { parseMessageEvent } from "../feishu/message-parser";
-import type { FeishuLongConnectionMessageEvent } from "../types";
+import { executeBridgeCommand, parseBridgeCommand } from "./command-router.js";
+import type { OrchestratorRequest, SenderPayload } from "./orchestrator.js";
+import { evaluateRequest } from "./permission-guard.js";
+import { buildGuardRejectionMessage } from "./rejection-message.js";
+import type { SessionStore } from "./session-store.js";
+import type { MessageSender } from "../feishu/message-sender.js";
+import { parseMessageEvent } from "../feishu/message-parser.js";
+import type { FeishuLongConnectionMessageEvent } from "../types.js";
 
 type MessageHandlerDependencies = {
   allowedOpenIds: string[];

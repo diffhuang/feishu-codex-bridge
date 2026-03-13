@@ -1,4 +1,4 @@
-import type { GuardConfig, GuardInput, GuardResult } from "../types";
+import type { GuardConfig, GuardInput, GuardResult } from "../types.js";
 
 export function evaluateRequest(
   request: GuardInput,

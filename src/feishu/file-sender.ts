@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import type { ValidatedAttachment, FeishuFileType } from "../files/file-policy";
+import type { ValidatedAttachment, FeishuFileType } from "../files/file-policy.js";
 
 type FeishuFileClient = {
   im: {

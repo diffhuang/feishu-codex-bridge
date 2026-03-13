@@ -1,6 +1,6 @@
 import * as Lark from "@larksuiteoapi/node-sdk";
-import type { BridgeLogger } from "../logging/timestamp-logger";
-import type { FeishuLongConnectionMessageEvent } from "../types";
+import type { BridgeLogger } from "../logging/timestamp-logger.js";
+import type { FeishuLongConnectionMessageEvent } from "../types.js";
 
 type LongConnectionInput = {
   appId: string;

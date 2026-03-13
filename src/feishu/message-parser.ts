@@ -2,7 +2,7 @@ import type {
   FeishuLongConnectionMessageEvent,
   FeishuMessageEvent,
   NormalizedRequest,
-} from "../types";
+} from "../types.js";
 
 function parseTextContent(rawContent: string): string {
   try {

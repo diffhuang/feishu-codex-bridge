@@ -1,4 +1,4 @@
-import type { SenderPayload } from "../bridge/orchestrator";
+import type { SenderPayload } from "../bridge/orchestrator.js";
 
 type FeishuMessageClient = {
   im: {

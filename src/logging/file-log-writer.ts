@@ -1,6 +1,6 @@
 import { appendFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
-import type { BridgeLogLevel } from "./timestamp-logger";
+import type { BridgeLogLevel } from "./timestamp-logger.js";
 
 type FileLogWriterOptions = {
   logDir: string;

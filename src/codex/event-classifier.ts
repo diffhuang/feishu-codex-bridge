@@ -1,4 +1,4 @@
-import type { ParsedCodexEvent } from "./event-parser";
+import type { ParsedCodexEvent } from "./event-parser.js";
 
 export type CodexEventRoutingDecision =
   | {

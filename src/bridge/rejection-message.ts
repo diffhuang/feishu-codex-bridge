@@ -1,4 +1,4 @@
-import type { GuardResult, NormalizedRequest } from "../types";
+import type { GuardResult, NormalizedRequest } from "../types.js";
 
 export function buildGuardRejectionMessage(
   reason: GuardResult["reason"],

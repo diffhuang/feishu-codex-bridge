@@ -1,4 +1,4 @@
-import type { CodexFileAttachment } from "./result-parser";
+import type { CodexFileAttachment } from "./result-parser.js";
 
 const ATTACHMENT_BLOCK_PATTERN =
   /\n?<FEISHU_ATTACHMENTS>\s*([\s\S]*?)\s*<\/FEISHU_ATTACHMENTS>\s*$/u;

@@ -1,4 +1,4 @@
-import type { SessionStore } from "./session-store";
+import type { SessionStore } from "./session-store.js";
 
 export type BridgeCommand =
   | { name: "help" }

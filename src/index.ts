@@ -1,32 +1,35 @@
 import dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
-import { createMessageHandler } from "./bridge/message-handler";
-import { createOrchestrator } from "./bridge/orchestrator";
-import { createInMemorySessionStore } from "./bridge/session-store";
-import { runCodex } from "./codex/runner";
-import { loadConfig } from "./config";
-import { resolveAllowedAttachment } from "./files/file-policy";
-import { createFileSender } from "./feishu/file-sender";
-import { createLongConnectionClient, createFeishuClient } from "./feishu/long-connection";
-import { combineLogWriters, createFileLogWriter } from "./logging/file-log-writer";
-import { createRequestEventLogWriter } from "./logging/request-event-log";
+import { createMessageHandler } from "./bridge/message-handler.js";
+import { createOrchestrator } from "./bridge/orchestrator.js";
+import { createInMemorySessionStore } from "./bridge/session-store.js";
+import { runCodex } from "./codex/runner.js";
+import { loadConfig } from "./config.js";
+import { resolveAllowedAttachment } from "./files/file-policy.js";
+import { createFileSender } from "./feishu/file-sender.js";
+import { createLongConnectionClient, createFeishuClient } from "./feishu/long-connection.js";
+import { combineLogWriters, createFileLogWriter } from "./logging/file-log-writer.js";
+import { createRequestEventLogWriter } from "./logging/request-event-log.js";
 import {
   createTimestampLogger,
   defaultConsoleLogWriter,
   toBridgeLogLevel,
-} from "./logging/timestamp-logger";
-import { createMessageSender } from "./feishu/message-sender";
+} from "./logging/timestamp-logger.js";
+import { createMessageSender } from "./feishu/message-sender.js";
+import { resolveRuntimePaths, type RuntimePaths } from "./runtime/paths.js";
 
 export const projectMetadata = {
   name: "feishu-codex-bridge",
 };
 
-export type { BridgeConfig } from "./config";
-export { loadConfig } from "./config";
+export type { BridgeConfig } from "./config.js";
+export { loadConfig } from "./config.js";
 
-function createBridgeLogger(logLevel = "info") {
-  const logDir = fileURLToPath(new URL("../logs/", import.meta.url));
+export type StartBridgeOptions = {
+  runtimePaths?: RuntimePaths;
+};
 
+function createBridgeLogger(logDir: string, logLevel = "info") {
   return createTimestampLogger({
     level: toBridgeLogLevel(logLevel),
     write: combineLogWriters(
@@ -36,10 +39,14 @@ function createBridgeLogger(logLevel = "info") {
   });
 }
 
-export async function startBridge(env: NodeJS.ProcessEnv = process.env) {
+export async function startBridge(
+  env: NodeJS.ProcessEnv = process.env,
+  options: StartBridgeOptions = {},
+) {
   const config = loadConfig(env);
-  const logDir = fileURLToPath(new URL("../logs/", import.meta.url));
-  const logger = createBridgeLogger(config.logLevel);
+  const runtimePaths = options.runtimePaths ?? resolveRuntimePaths();
+  const logDir = runtimePaths.logDir;
+  const logger = createBridgeLogger(logDir, config.logLevel);
   const client = createFeishuClient({
     appId: config.appId,
     appSecret: config.appSecret,
@@ -95,7 +102,7 @@ export async function startBridge(env: NodeJS.ProcessEnv = process.env) {
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   dotenv.config();
   startBridge().catch((error) => {
-    createBridgeLogger().error("[bridge] failed to start", error);
+    createBridgeLogger(resolveRuntimePaths().logDir).error("[bridge] failed to start", error);
     process.exitCode = 1;
   });
 }

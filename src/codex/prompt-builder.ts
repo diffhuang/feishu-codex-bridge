@@ -1,4 +1,4 @@
-import type { CodexResponseMode } from "./response-mode";
+import type { CodexResponseMode } from "./response-mode.js";
 
 export type PromptBuilderInput = {
   responseMode: CodexResponseMode;
