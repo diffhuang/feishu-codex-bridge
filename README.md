@@ -58,42 +58,7 @@ Use a path such as:
 
 ## Quick Start
 
-### Option 1: Global CLI install (Recommended)
-
-1. Install the package globally:
-
-```bash
-npm install -g feishu-codex-bridge
-```
-
-2. Create and enter a local runtime directory:
-
-```bash
-mkdir feishu-codex-bridge-runtime
-cd feishu-codex-bridge-runtime
-```
-
-3. Generate a local `.env` file from the packaged example:
-
-```bash
-feishu-codex-bridge init
-```
-
-4. Update `.env` with your Feishu app credentials, allowed open IDs, and Codex workspace path.
-
-5. Start the bridge:
-
-```bash
-feishu-codex-bridge
-```
-
-Expected startup log:
-
-```text
-[bridge] starting long connection for workspace /path/to/codex-workspace
-```
-
-### Option 2: Source checkout for development
+### Option 1: Source checkout (available now)
 
 1. Clone the repository and enter the project directory:
 
@@ -120,6 +85,43 @@ cp .env.example .env
 
 ```bash
 npm run dev
+```
+
+Expected startup log:
+
+```text
+[bridge] starting long connection for workspace /path/to/codex-workspace
+```
+
+### Option 2: Global CLI install (available after npm publish)
+
+If this package has been published to npm, you can install it globally:
+
+1. Install the package globally:
+
+```bash
+npm install -g feishu-codex-bridge
+```
+
+2. Create and enter a local runtime directory:
+
+```bash
+mkdir feishu-codex-bridge-runtime
+cd feishu-codex-bridge-runtime
+```
+
+3. Generate a local `.env` file from the packaged example:
+
+```bash
+feishu-codex-bridge init
+```
+
+4. Update `.env` with your Feishu app credentials, allowed open IDs, and Codex workspace path.
+
+5. Start the bridge:
+
+```bash
+feishu-codex-bridge
 ```
 
 Expected startup log:

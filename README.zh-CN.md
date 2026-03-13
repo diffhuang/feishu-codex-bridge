@@ -58,42 +58,7 @@ codex --help
 
 ## 快速开始
 
-### 方式一：全局安装 CLI（推荐）
-
-1. 全局安装：
-
-```bash
-npm install -g feishu-codex-bridge
-```
-
-2. 创建并进入本地运行目录：
-
-```bash
-mkdir feishu-codex-bridge-runtime
-cd feishu-codex-bridge-runtime
-```
-
-3. 初始化本地 `.env`：
-
-```bash
-feishu-codex-bridge init
-```
-
-4. 编辑 `.env`，填写飞书应用凭证、允许访问的 open id，以及 Codex 工作区路径。
-
-5. 启动桥接服务：
-
-```bash
-feishu-codex-bridge
-```
-
-出现类似日志，说明桥接服务已经开始建立飞书长连接：
-
-```text
-[bridge] starting long connection for workspace /path/to/codex-workspace
-```
-
-### 方式二：源码开发
+### 方式一：源码运行（当前可直接使用）
 
 1. 克隆仓库并进入项目目录：
 
@@ -120,6 +85,43 @@ cp .env.example .env
 
 ```bash
 npm run dev
+```
+
+出现类似日志，说明桥接服务已经开始建立飞书长连接：
+
+```text
+[bridge] starting long connection for workspace /path/to/codex-workspace
+```
+
+### 方式二：全局安装 CLI（npm 发布后可用）
+
+如果这个包已经发布到 npm，可以用下面的方式全局安装：
+
+1. 全局安装：
+
+```bash
+npm install -g feishu-codex-bridge
+```
+
+2. 创建并进入本地运行目录：
+
+```bash
+mkdir feishu-codex-bridge-runtime
+cd feishu-codex-bridge-runtime
+```
+
+3. 初始化本地 `.env`：
+
+```bash
+feishu-codex-bridge init
+```
+
+4. 编辑 `.env`，填写飞书应用凭证、允许访问的 open id，以及 Codex 工作区路径。
+
+5. 启动桥接服务：
+
+```bash
+feishu-codex-bridge
 ```
 
 出现类似日志，说明桥接服务已经开始建立飞书长连接：
